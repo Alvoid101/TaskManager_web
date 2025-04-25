@@ -1,0 +1,23 @@
+{% extends 'task/task_info.html' %}
+
+{% block extra_head %}
+<title>Borrar tarea</title>
+{% endblock extra_head%}
+
+{% block content %}
+<h2>Confirmar Eliminación</h2>
+<div class="info-container fade-in-down">
+
+    <p>¿Estás seguro de que quieres eliminar la tarea "<strong>{{ task.title }}</strong>"?</p>
+
+
+    <form method="post">
+        {% csrf_token %}
+        <nav>
+            <button type="submit" class="submit-btn">Sí, Eliminar</button>
+            
+            <a href="{% url 'index' %}" class="task-btn-cancel">Cancelar</a>
+        </nav>
+    </form>
+</div>
+{% endblock content %}

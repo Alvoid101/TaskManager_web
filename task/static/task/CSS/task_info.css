@@ -1,0 +1,154 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../FONTS/Roboto-VariableFont_wdth\,wght.ttf') format('truetype');
+    font-weight: 100 900; /* Esto indica que acepta pesos variables */
+    font-stretch: 75% 125%;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../FONTS/Roboto-Italic-VariableFont_wdth\,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-stretch: 75% 125%;
+    font-style: italic;
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(10px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.fade-in-down {
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+a{
+    text-decoration: none;
+}
+
+h1, h2{
+    color: white;
+    font-weight: 200
+}
+
+p{
+    color: white;
+}
+
+body{
+    background-color: rgb(18, 18, 18);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 80vh;
+}
+
+.fade-in-down {
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+
+.task-content, .form-container, .info-container{
+    background-color: rgb(38, 38, 38);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.task-status-finished{
+    color: #9554d1;
+}
+
+.task-status-progress{
+    color: #1bc184;
+}
+
+.form-elements{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label{
+    color: white;
+}
+
+input, textarea, #delivery_date{
+    background-color: #262626;
+    color: gray;
+}
+
+button{
+    background-color: rgb(38, 38, 38);
+    color: white;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 1px;
+}
+
+button:hover{
+    background-color: rgb(70, 70, 70);
+
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+nav > *{
+    background-color: rgb(38, 38, 38);
+    color: white;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+nav > *:hover{
+    background-color: rgb(60, 60, 60); 
+}
+
+.task-btn-cancel{
+
+}
+
+.task-btn-delete:hover{
+    background-color: #d13c56; 
+}
+
+.task-btn-update:hover{
+    background-color: #1897d1;
+}

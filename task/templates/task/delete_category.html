@@ -1,0 +1,34 @@
+<!-- filepath: c:\Users\Caaya\OneDrive - Universidad Industrial de Santander\Desktop\TaskManager\TaskManager\task\templates\task\delete_category.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Eliminación</title>
+    <link rel="stylesheet" href="{% static 'task/CSS/add_category.css' %}">
+    <style>
+        .delete-actions { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+        .delete-btn { background-color: #dc3545; } /* Rojo para eliminar */
+        .delete-btn:hover { background-color: #c82333; }
+        .cancel-btn { background-color: #6c757d; } /* Gris para cancelar */
+        .cancel-btn:hover { background-color: #5a6268; }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Confirmar Eliminación</h2>
+
+        <p>¿Estás seguro de que quieres eliminar la categoría "<strong>{{ category.name }}</strong>"?</p>
+        <p><strong>Advertencia:</strong> Esto no eliminará los enlaces asociados, pero quedarán sin categoría.</p>
+
+        <form method="post" action="{% url 'delete_category' category.id %}">
+            {% csrf_token %}
+            <div class="delete-actions">
+                <button type="submit" class="submit-btn delete-btn">Sí, Eliminar</button>
+                <a href="{% url 'index' %}" class="submit-btn cancel-btn" style="text-decoration: none; text-align: center;">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'task/task_info.html' %}
+{% load static %}
+
+{% block extra_head %}
+<title>Nueva tarea</title>
+{% endblock extra_head%}
+
+{% block content %}
+<h1>Nueva tarea</h1>
+
+<div class="form-container fade-in-down">
+    <form method="POST" class="form-elements">
+        {% csrf_token %}
+        
+        <label for="{{ form.title.id_for_label }}">{{ form.title.label }}:</label>
+        {{ form.title }}
+
+        <label for="{{ form.description.id_for_label }}">{{ form.description.label }}:</label>
+        {{ form.description }}
+
+        <label for="{{ form.delivery_date.id_for_label }}">{{ form.delivery_date.label }}:</label>
+        {{ form.delivery_date }}
+
+        <label for="{{ form.finished.id_for_label }}">{{ form.finished.label }}:{{ form.finished }}</label>
+        
+
+        <button type="submit">Agregar tarea</button>
+    </form>
+</div>
+<nav class="fade-in-down">
+    <a href="{% url 'index' %}">volver</a>
+</nav>
+{% endblock content%}

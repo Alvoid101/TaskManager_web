@@ -1,0 +1,482 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../FONTS/Roboto-VariableFont_wdth\,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-stretch: 75% 125%;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../FONTS/Roboto-Italic-VariableFont_wdth\,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-stretch: 75% 125%;
+    font-style: italic;
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(10px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.fade-in-down {
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+h1, h2{
+    color: white;
+    font-weight: 100
+}
+
+
+
+body{
+    background-color: rgb(18, 18, 18);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+#OperationSection{
+	display: flex;   
+    flex-direction: row;
+	justify-content: space-between;   
+	align-items: flex-start; 
+}
+
+#OperationSection > div{
+    width: 33%;
+    height: 430px;
+    margin-top: 10px;
+    overflow-y: auto;
+    scrollbar-color: #9f9f9f #121212 ;
+}
+
+@media (max-width: 1023px){
+    #OperationSection{
+        display: flex;   
+        flex-direction: column;
+        justify-content: space-between;   
+        align-items: center; 
+    }  
+    #OperationSection > div{
+        width: 100%;
+        height: 430px;
+    }
+}
+
+/*
+#finished-tasks{
+    border-left: 1px solid rgb(211, 211, 211);
+}
+
+#TaskList{
+    border-right: 1px solid rgb(211, 211, 211);
+}
+*/
+a{
+    text-decoration: none;
+}
+
+#TaskList ul, #finished-tasks ul{
+    color: white;
+}
+
+.task-li{
+    color: #1bc184;
+}
+
+.task-li:hover{
+    color: #23ffae;
+}
+
+.task-li-finished{
+    color: #9554d1;
+}
+
+.task-li-finished:hover{
+    color: #b566ff;
+}
+
+.task-btn-finish, .task-btn-begin{
+    background-color: rgb(38, 38, 38);
+    color: white;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 1px;
+
+}
+
+.task-btn-begin:hover{
+    background-color: #1bc184;   
+}
+.task-btn-finish:hover{
+    background-color: #9554d1;
+
+}
+
+.task-btn-add, .taskfinished-btn-delete{
+    display: block;
+    background-color: rgb(38, 38, 38);
+    color: white;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 1px;
+    text-align: center; 
+    margin: auto;
+}
+
+.task-btn-add:hover, .taskfinished-btn-delete:hover{
+    background-color: #464646;
+}
+
+#Browser{
+    border-left: 1px solid rgb(211, 211, 211);
+    border-right: 1px solid rgb(211, 211, 211);
+    text-align: center;
+}
+
+
+@media (max-width: 1023px){
+    #Browser{
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid rgb(211, 211, 211);
+        border-bottom: 1px solid rgb(211, 211, 211);
+        text-align: center;
+    }
+}
+
+#BrowserIMG {
+    border-radius: 50px;
+    display: block;
+    margin: auto;
+    padding: 10px;
+    width: 300px;
+    height: 300px;
+}
+
+#ShearchBox{
+    background-color: rgb(38, 38, 38);
+    border-radius: 50px;
+    border: 1px solid rgb(211, 211, 211);
+    height: 40px;
+    width: 80%;
+    margin: 5px;
+    text-align: center;
+    color: white;
+}
+
+#shearchButton{
+    display: block;
+    background-color: rgb(38, 38, 38);
+    color: white;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 8px;
+    font-size: larger;
+    width: 60px;
+    margin: auto;
+
+    text-decoration: none;
+
+}
+
+#shearchButton:hover{
+    background-color: #464646;
+    cursor: pointer;
+    color: white;
+}
+
+
+
+
+
+.user-info {
+    color: white;
+    text-align: right;
+}
+
+.logout-btn {
+    background-color: rgb(50, 50, 50);
+    color: white;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin: 10px;
+}
+
+.logout-btn:hover {
+    background-color: rgb(70, 70, 70);
+}
+/* ...existing code... */
+
+.links-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.links-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background-color: rgb(38, 38, 38);
+    color: white;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-btn:hover {
+    background-color: rgb(60, 60, 60);
+}
+
+/* ...existing code... */
+
+/* Estilos para la sección de enlaces - ajustado */
+#HyperLinks {
+    margin: 10px;
+    width: calc(100% - 20px);
+    height: auto;
+    border-top: 1px solid rgb(211, 211, 211);
+    color: white;
+    padding-top: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Unificar estilos de tarjetas de categoría */
+.category-card {
+    background-color: rgb(38, 38, 38);
+    border-radius: 5px;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 150px;
+    max-width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+    margin-bottom: 0 !important;
+}
+
+/* ...existing code... */
+
+/* ...existing code... */
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;  /* Valor alto para asegurarse de que esté por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: rgb(38, 38, 38);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 10px;
+    width: 300px;
+    color: white;
+    position: relative;
+}
+
+.close {
+    color: rgb(211, 211, 211);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+.submit-btn:hover {
+    background-color: rgb(70, 70, 70);
+}
+
+/* Estilos para las categorías */
+.category-card {
+    background-color: rgb(38, 38, 38);
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 150px;
+}
+
+.category-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.category-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+.category-links li {
+    margin-bottom: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.2);
+}
+
+.category-links li:last-child {
+    border-bottom: none;
+}
+
+/* Estilo para el contenedor de acciones de enlaces */
+.link-actions {
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.category-links li:hover .link-actions {
+    opacity: 1;
+}
+
+
+.category-links a {
+    color: #7af;
+    text-decoration: none;
+}
+
+.category-links a:hover {
+    text-decoration: underline;
+}
+
+.btn-add-category {
+
+    display: inline-block;
+    color: white;
+    background-color: rgb(38, 38, 38);
+    border-radius: 3px;
+    padding: 8px 16px;
+    border: 1px solid rgb(211, 211, 211);
+    font-size: larger;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.btn-add-category:hover {
+    color: white;
+}
+  .btn-add-category:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+/* ... (otros estilos) ... */
+
+.add-link-btn-small {
+    display: inline-block; 
+    padding: 6px 12px; 
+    margin-top: 8px; 
+    font-size: 0.85rem; 
+    font-weight: 500; 
+    color: #ccc; 
+    background-color: #383838; 
+    border: 1px solid #555; 
+    border-radius: 4px; 
+    text-decoration: none; 
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); 
+}
+
+.add-link-btn-small:hover {
+    background-color: #484848; 
+    color: #fff;
+    border-color: #777; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+    transform: translateY(-1px); 
+}
+
+.add-link-btn-small:active {
+    background-color: #282828; 
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3); 
+    transform: translateY(0); 
+}
+
+/* Estilo base para el contenedor de categorías */
+.categories-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+/* Media query para tabletas */
+@media (max-width: 992px) {
+    .categories-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Media query para móviles */
+@media (max-width: 768px) {
+    .categories-container {
+        grid-template-columns: 1fr; /* Una sola columna para móviles */
+    }
+    
+    /* Ajustes adicionales para mejorar la visualización en móviles */
+    .category-card {
+        margin-bottom: 15px;
+    }
+}

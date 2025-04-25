@@ -1,0 +1,40 @@
+<!-- filepath: c:\Users\Caaya\OneDrive - Universidad Industrial de Santander\Desktop\TaskManager\TaskManager\task\templates\task\edit_category.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Categoría</title>
+    <!-- Reutilizamos el CSS de add_category -->
+    <link rel="stylesheet" href="{% static 'task/CSS/add_category.css' %}">
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Editar Categoría</h2>
+
+        {% if messages %}
+          <ul class="messages">
+          {% for m in messages %}
+            <li>{{ m }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+
+        <form method="post" action="{% url 'edit_category' category.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="category_name">Nuevo nombre</label>
+                <input type="text" id="category_name" name="category_name" value="{{ category.name }}" required>
+            </div>
+            <button type="submit" class="submit-btn">Guardar Cambios</button>
+        </form>
+
+        <p style="text-align:center; margin-top:15px;">
+            <a href="{% url 'index' %}" style="color:#7af; text-decoration:none;">
+              Cancelar
+            </a>
+        </p>
+    </div>
+</body>
+</html>

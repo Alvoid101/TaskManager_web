@@ -1,0 +1,33 @@
+{% extends 'task/task_info.html' %}
+
+{% block extra_head %}
+<title>Borrar tarea</title>
+{% endblock extra_head%}
+
+{% block content %}
+<h2>Confirmar Estado de la tarea</h2>
+<div class="info-container fade-in-down">
+    {% if task.finished %}
+        <p>¿Estás seguro de que quieres iniciar la tarea "<strong>{{ task.title }}</strong>"?</p>
+    {% else %}
+        <p>¿Estás seguro de que quieres finalizar la tarea "<strong>{{ task.title }}</strong>"?</p>
+
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {% if task.finished %}
+            <nav>
+                <button type="submit" class="submit-btn">Sí, Iniciar</button>
+                <a href="{% url 'index' %}">Cancelar</a>
+            </nav>    
+        {% else %}
+            <nav>
+                <button type="submit" class="submit-btn">Sí, Finalizar</button>
+                <a href="{% url 'index' %}">Cancelar</a>
+            </nav>            
+        {% endif %}
+
+    </form>
+</div>
+{% endblock content %}

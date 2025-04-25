@@ -1,0 +1,32 @@
+{% extends 'task/task_info.html' %}
+{% load static %}
+
+{% block extra_head %}
+<title>Editar Tarea</title>
+{% endblock extra_head%}
+
+{% block content %}
+<h1>Editar tarea</h1>
+
+<div class="form-container">
+    <form method="POST" class="form-elements">
+        {% csrf_token %}
+        
+        <label for="{{ form.title.id_for_label }}">{{ form.title.label }}:</label>
+        {{ form.title }}
+
+        <label for="{{ form.description.id_for_label }}">{{ form.description.label }}:</label>
+        {{ form.description }}
+
+        <label for="{{ form.delivery_date.id_for_label }}">{{ form.delivery_date.label }}:</label>
+        {{ form.delivery_date }}
+
+        <label for="{{ form.finished.id_for_label }}">{{ form.finished.label }}:{{ form.finished }}</label>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+</div>
+<nav class="fade-in-down">
+    <a href="{% url 'read_task' task.id %}" class="task-btn-cancel" >Cancelar</a>
+</nav>
+{% endblock content%}

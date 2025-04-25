@@ -1,0 +1,133 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'task/CSS/index.css' %}">
+    <link rel="icon" href="{% static 'task/IMG/favicon.ico' %}" type="image/x-icon">
+
+</head>
+<body>
+    <div class="user-info">
+        <span>Hola, {{ user.username }}</span>
+        <a href="{% url 'logout' %}" class="logout-btn">Cerrar sesión</a>
+    </div>
+    <section id="OperationSection">
+
+        <div id="TaskList" class="fade-in-left">
+          <h1>Lista de tareas</h1>
+            <ul>                                                   
+              {% for task in tasks %}
+                <li><a href="{% url 'read_task' task.id %}" class="task-li">{{ task.title }} ({{task.delivery_date}})</a> <a href="{% url 'finish_unfinish_task' task.id %}" class="task-btn-finish">  ↪︎ </a></li>
+                <br>
+              {% endfor %}
+          </ul>
+          <a href="{% url 'create_task' %}" class="task-btn-add">Añadir tarea</a>
+          <br>
+        </div>
+    
+        <div id="Browser" class="fade-in-down">
+           <img id="BrowserIMG" src="{% static 'task/IMG/WhiteFlower.gif' %}" alt="Examples IMG">
+           <input id="ShearchBox" placeholder="Busca algo interesante :)">
+           <br>
+           <a id="shearchButton" target="_blank">Buscar</a>    
+        </div>
+    
+        <div id="finished-tasks" class="fade-in-right">
+          <h1>Tareas finalizadas</h1>
+          <ul>
+            {% for task in finished_tasks %}
+              <li><a href="{% url 'read_task' task.id %}" class="task-li-finished">{{ task.title }} <a href="{% url 'finish_unfinish_task' task.id %}" class="task-btn-begin">↩︎</a></a></li>
+              <br>
+            {% endfor %}  
+          </ul>
+          {% if finished_tasks %}
+            <a href="{% url 'delete_finished_tasks' %}" class="taskfinished-btn-delete">Eliminar tareas finalizadas</a>
+            <br>          
+          {% endif %}
+          </div>
+    </section>
+    <!-- ...existing code... -->
+
+    <nav id="HyperLinks" class="fade-in-down">
+        <div class="links-header">
+          <h2>Mis Enlaces</h2>
+          <div class="links-actions">
+            <button type="button" onclick="window.location.href='{% url 'add_category' %}'" class="btn-add-category">Añadir Categoría</button>
+          </div>
+        </div>
+        <div class="categories-container">
+            {% for category in categories %}
+              <div class="category-card">
+                <div class="category-title">
+                  <span>{{ category.name }}</span>
+                  <div class="category-actions" style="float: right; display: inline-flex; gap: 5px;">
+                      <a href="{% url 'edit_category' category.id %}" title="Editar" style="color: #ffc107; text-decoration: none;">✏️</a>
+                      <a href="{% url 'delete_category' category.id %}" title="Eliminar" style="color: #dc3545; text-decoration: none;">🗑️</a>
+                  </div>
+                </div><ul class="category-links">
+                  {% for link in category.links.all %}
+                    <li>
+                      <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <a href="{{ link.content }}" target="_blank">{{ link.name }}</a>
+                        <div class="link-actions" style="display: inline-flex; gap: 5px;">
+                          <a href="{% url 'edit_link' link.id %}" title="Editar" style="color: #ffc107; text-decoration: none;">✏️</a>
+                          <a href="{% url 'delete_link' link.id %}" title="Eliminar" style="color: #dc3545; text-decoration: none;">🗑️</a>
+                        </div>
+                      </div>
+                    </li>
+                  {% empty %}
+                    <li style="color: #6c757d; font-style: italic;">No hay enlaces en esta categoría.</li>
+                  {% endfor %}
+                </ul>
+                <!-- NUEVO BOTÓN/ENLACE PARA AÑADIR LINK A ESTA CATEGORÍA -->
+                <div style="margin-top: 10px; text-align: center;">
+                  <a href="{% url 'add_link' category.id %}" class="add-link-btn-small">Añadir Enlace</a>
+                </div>
+              </div>
+            {% empty %}
+              <p style="color: #6c757d;">Aún no has creado ninguna categoría.</p>
+            {% endfor %}
+          </div>
+      </nav>
+
+
+   
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener referencias a los elementos del modal
+            const categoryModal = document.getElementById("categoryModal");
+            const addCategoryBtn = document.getElementById("addCategoryBtn");
+            const closeBtn = document.querySelector("#categoryModal .close");
+            
+            // Abrir el modal cuando se hace clic en el botón
+            if (addCategoryBtn) {
+                addCategoryBtn.addEventListener('click', function() {
+                    categoryModal.style.display = "block";
+                    console.log("Modal abierto");
+                });
+            }
+            
+            // Cerrar el modal cuando se hace clic en la X
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    categoryModal.style.display = "none";
+                });
+            }
+            
+            // Cerrar el modal cuando se hace clic fuera de él
+            window.addEventListener('click', function(event) {
+                if (event.target === categoryModal) {
+                    categoryModal.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+    <script src="{% static 'task/JS/index.js'%}"></script>
+
+</body>
+</html>

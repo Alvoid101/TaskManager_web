@@ -1,0 +1,41 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="{% static 'task/CSS/login.css' %}">
+</head>
+<body>
+    <div class="auth-container">
+        <h1 class="fade-in">Bienvenido</h1>
+        
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username" class="fade-in">Usuario:</label>
+                <input type="text" name="username" id="username" class="fade-in">
+            </div>
+            <div class="form-group">
+                <label for="password" class="fade-in">Contraseña:</label>
+                <input type="password" name="password" id="password" class="fade-in" required>
+            </div>
+            <button type="submit" class="fade-in">Iniciar Sesión</button>
+        </form>
+        
+        <div class="auth-toggle">
+            <p class="fade-in">¿No tienes cuenta? <a href="{% url 'register' %}" class="fade-in">Regístrate aquí</a></p>
+        </div>
+    </div>
+</body>
+</html>

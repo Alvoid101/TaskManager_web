@@ -1,0 +1,36 @@
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Categoría</title>
+    <link rel="stylesheet" href="{% static 'task/CSS/add_category.css' %}">
+</head>
+<body><div class="auth-container fade-in-down">
+    <h2>Añadir Categoría</h2>
+
+    {% if messages %}
+      <ul class="messages">
+      {% for m in messages %}
+        <li>{{ m }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+
+    <form method="post" action="{% url 'add_category' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="category_name">Nombre de la categoría</label>
+            <input type="text" id="category_name" name="category_name" required>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Guardar</button>
+            <!-- Asegúrate que el enlace Cancelar tenga ambas clases -->
+            <a href="{% url 'index' %}" class="submit-btn cancel-btn">Cancelar</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

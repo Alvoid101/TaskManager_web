@@ -1,0 +1,45 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Enlace a {{ category.name }}</title>
+    <!-- Reutilizamos el CSS de add_category o creamos uno nuevo si prefieres -->
+    <link rel="stylesheet" href="{% static 'task/CSS/add_category.css' %}">
+</head>
+<!-- filepath: c:\Users\Caaya\OneDrive - Universidad Industrial de Santander\Desktop\TaskManager\TaskManager\task\templates\task\add_link.html -->
+<body>
+    <div class="auth-container">
+        <h2>Añadir Enlace a "{{ category.name }}"</h2>
+
+        {% if messages %}
+          <ul class="messages">
+          {% for m in messages %}
+            <li>{{ m }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+
+        <form method="post" action="{% url 'add_link' category.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="link_name">Nombre del Enlace</label>
+                <input type="text" id="link_name" name="link_name" required>
+            </div>
+            <div class="form-group">
+                <label for="link_content">URL del Enlace</label>
+                <input type="url" id="link_content" name="link_content" placeholder="https://ejemplo.com" required>
+            </div>
+            <!-- Envuelve los botones en form-actions -->
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Guardar Enlace</button>
+                <!-- Añade las clases submit-btn y cancel-btn al enlace Cancelar -->
+                <a href="{% url 'index' %}" class="submit-btn cancel-btn">Cancelar</a>
+            </div>
+        </form>
+    
+    </div>
+</body>
+</html>

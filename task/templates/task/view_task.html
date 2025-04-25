@@ -1,0 +1,36 @@
+{% extends 'task/task_info.html' %}
+
+{% block extra_head %}
+    <title>ver tarea</title>
+{% endblock extra_head%}
+
+{% block content %}
+<h1 class="task-title fade-in-down">{{task.title}}</h1>
+<div class="task-content fade-in-down">
+
+    <h2 class="task-subtitle">Descripción</h2>
+    <p class="task-description">{{task.description}}</p>
+    <h2 class="task-subtitle">Finalización de la tarea</h2>
+    <p class="task-date">{{task.delivery_date}}</p>
+    <h2 class="task-subtitle">Estado de la tarea</h2>
+    
+    {% if task.finished == True %}
+    
+        <p class="task-status-finished"><b>La tarea se ha finalizado</b></p>
+    
+    {% else %}
+    
+        <p class="task-status-progress"><b>En progreso</b></p>
+    
+    {% endif %}
+
+</div>
+
+<nav class="fade-in-down">
+    <a href="{% url 'index' %}" class="task-btn-back">Volver</a>
+    <a href="{% url 'update_task' task.id %}" class="task-btn-update">Editar</a>
+    <a href="{% url 'delete_task' task.id %}" class="task-btn-delete">Eliminar</a>
+</nav>
+
+
+{% endblock content %}
